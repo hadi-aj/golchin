@@ -11,12 +11,14 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AuthService {
 
+  // registerCredentials = { username: '', password: '' };
+
   constructor(public http: Http) {
     console.log('Hello AuthService Provider');
   }
 
-  login() {
-    return this.http.get("http://localhost/ionic/login.php").map(r => r.json() );
+  login(credentials: any) {
+    return this.http.post("http://localhost/ionic/login.php" , JSON.stringify(credentials) ).map(r => r.json() );
   }
 
 }

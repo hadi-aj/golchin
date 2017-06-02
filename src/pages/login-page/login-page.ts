@@ -18,6 +18,7 @@ import { HomePage } from "../home/home";
 export class LoginPage {
 
   loading: Loading;
+  registerCredentials = { username: '', password: '' };
 
   constructor(
     public navCtrl: NavController,
@@ -33,10 +34,10 @@ export class LoginPage {
 
   login() {
     this.showLoading();
-    this.auth.login().subscribe(
+    this.auth.login(this.registerCredentials).subscribe(
       data => {
         console.log(data);
-        if (data.result == 1) {
+        if (data.result == 11) {
           this.navCtrl.setRoot(HomePage)
         }else {
           this.showError('username or pass incorrect');

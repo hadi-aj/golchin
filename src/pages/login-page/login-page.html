@@ -1,30 +1,32 @@
 <ion-content>
     <ion-grid no-padding>
-        <ion-row>
-            <ion-col>
+        <form (ngSubmit)="login()" #loginForm="ngForm">
+            <ion-row>
+                <ion-col>
 
-                <ion-list class="box">
+                    <ion-list class="box">
 
-                    <ion-item>
-                        <ion-label>
-                            <ion-icon name="person" color="white"></ion-icon>
-                        </ion-label>
-                        <ion-input type="text" placeholder="USER NAME"></ion-input>
-                    </ion-item>
+                        <ion-item>
+                            <ion-label>
+                                <ion-icon name="person" color="white"></ion-icon>
+                            </ion-label>
+                            <ion-input type="text" placeholder="USER NAME" name="username" [(ngModel)]="registerCredentials.username" required></ion-input>
+                        </ion-item>
 
-                    <ion-item class="no-border">
-                        <ion-label>
-                            <ion-icon name="lock" color="white"></ion-icon>
-                        </ion-label>
-                        <ion-input type="password" placeholder="PASSWORD"></ion-input>
-                    </ion-item>
-                </ion-list>
-            </ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col text-center>
-                <button ion-button color="white" outline large (click)="login()">LOGIN</button>
-            </ion-col>
-        </ion-row>
+                        <ion-item class="no-border">
+                            <ion-label>
+                                <ion-icon name="lock" color="white"></ion-icon>
+                            </ion-label>
+                            <ion-input type="password" placeholder="PASSWORD" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
+                        </ion-item>
+                    </ion-list>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col text-center>
+                    <button ion-button color="white" outline large type="submit">LOGIN</button>
+                </ion-col>
+            </ion-row>
+        </form>
     </ion-grid>
 </ion-content>

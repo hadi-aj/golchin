@@ -11,6 +11,8 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login-page/login-page';
 
+import { FormsModule }   from '@angular/forms';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -18,6 +20,7 @@ import { LoginPage } from '../pages/login-page/login-page';
     LoginPage
   ],
   imports: [
+    FormsModule,
     HttpModule,
     BrowserModule,
     IonicModule.forRoot(MyApp)
