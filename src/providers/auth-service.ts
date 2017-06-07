@@ -1,24 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http , Headers } from '@angular/http';
+import { Observable }     from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-/*
-  Generated class for the AuthService provider.
+import { User } from "../models/user";
 
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
-*/
 @Injectable()
 export class AuthService {
 
-  // registerCredentials = { username: '', password: '' };
 
-  constructor(public http: Http) {
-    console.log('Hello AuthService Provider');
-  }
+  constructor(public http: Http) {}
 
-  login(credentials: any) {
-    return this.http.post("http://localhost/ionic/login.php" , JSON.stringify(credentials) ).map(r => r.json() );
+  login(credentials: any): Observable<User> {
+    let url: string = 'http://localhost/ionic/yii2-rest/web/rest-v1/user/login';
+    let headers = new Headers();
+    
+    headers.append('Authorization', 'Basic ' + btoa( credentials.username + ':' + credentials.password ));
+
+    return this.http.post(url, JSON.stringify(credentials) , { headers: headers } ).map(r => r.json() as User );
   }
 
 }

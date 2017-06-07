@@ -2,14 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, Loading, AlertController } from 'ionic-angular';
 
 import { AuthService } from "../../providers/auth-service";
+import { UserProvider } from "../../providers/user-provider";
 import { HomePage } from "../home/home";
 
-/**
- * Generated class for the LoginPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 @IonicPage()
 @Component({
   selector: 'page-login-page',
@@ -25,7 +20,8 @@ export class LoginPage {
     public navParams: NavParams,
     private auth: AuthService,
     public loadingCtrl: LoadingController,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private userProvider: UserProvider
   ) { }
 
   ionViewDidLoad() {
@@ -36,8 +32,12 @@ export class LoginPage {
     this.showLoading();
     this.auth.login(this.registerCredentials).subscribe(
       data => {
+        // console.log('data = ');
         console.log(data);
-        if (data.result == 11) {
+        if (data.token) {
+          // this.user.email = 'XXXXXXXXXXXX';
+          this.userProvider.setUser(data);
+          // console.log(this.userProvider.user);
           this.navCtrl.setRoot(HomePage)
         }else {
           this.showError('username or pass incorrect');

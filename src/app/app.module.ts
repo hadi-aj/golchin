@@ -5,6 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { AuthService } from "../providers/auth-service";
+import { UserProvider } from "../providers/user-provider";
+import { DataService } from "../providers/data-service";
 import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
@@ -35,7 +37,9 @@ import { FormsModule }   from '@angular/forms';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthService
+    AuthService,
+    UserProvider,
+    DataService
   ]
 })
 export class AppModule {}
