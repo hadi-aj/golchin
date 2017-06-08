@@ -3,15 +3,17 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { HttpModule } from '@angular/http';
 
 import { AuthService } from "../providers/auth-service";
 import { UserProvider } from "../providers/user-provider";
 import { DataService } from "../providers/data-service";
-import { HttpModule } from '@angular/http';
+import { ConfigProvider } from "../providers/config-provider";
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login-page/login-page';
+import { ItemPage } from '../pages/item/item';
 
 import { FormsModule }   from '@angular/forms';
 
@@ -19,7 +21,9 @@ import { FormsModule }   from '@angular/forms';
   declarations: [
     MyApp,
     HomePage,
-    LoginPage
+    LoginPage,
+    ItemPage,
+
   ],
   imports: [
     FormsModule,
@@ -31,7 +35,8 @@ import { FormsModule }   from '@angular/forms';
   entryComponents: [
     MyApp,
     HomePage,
-    LoginPage
+    LoginPage,
+    ItemPage
   ],
   providers: [
     StatusBar,
@@ -39,7 +44,8 @@ import { FormsModule }   from '@angular/forms';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService,
     UserProvider,
-    DataService
+    DataService,
+    ConfigProvider
   ]
 })
 export class AppModule {}

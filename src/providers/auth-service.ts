@@ -5,14 +5,16 @@ import 'rxjs/add/operator/map';
 
 import { User } from "../models/user";
 
+import { ConfigProvider } from "../providers/config-provider";
+
 @Injectable()
 export class AuthService {
 
 
-  constructor(public http: Http) {}
+  constructor(public http: Http ,private configProvider: ConfigProvider) {}
 
   login(credentials: any): Observable<User> {
-    let url: string = 'http://localhost/ionic/yii2-rest/web/rest-v1/user/login';
+    let url: string = this.configProvider.conf.baseUrl + '/user/login';
     let headers = new Headers();
     
     headers.append('Authorization', 'Basic ' + btoa( credentials.username + ':' + credentials.password ));
