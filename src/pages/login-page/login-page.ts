@@ -32,23 +32,27 @@ export class LoginPage {
     this.showLoading();
     this.auth.login(this.registerCredentials).subscribe(
       data => {
-        // console.log('data = ');
-        console.log(data);
-        if (data.token) {
-          // this.user.email = 'XXXXXXXXXXXX';
-          this.userProvider.setUser(data);
-          // console.log(this.userProvider.user);
+        // console.log(data);
+        if (data.status === 200) {
+          this.userProvider.setUser(data.content);
           this.navCtrl.setRoot(HomePage)
-        }else {
+        } else if (data.status == 401) {
           this.showError('username or pass incorrect');
+        } else {
+          this.showError('error ' + data.status);
         }
       },
       err => {
-        this.showError('connection error');
+        if (err.status == 401) {
+          this.showError('username or pass incorrect');
+        }
+        else {
+          this.showError('error ' + err.status);
+        }
       },
       () => {
-        console.log('Movie Search Complete');
-        this.showLoading
+        // console.log('Movie Search Complete');
+        // this.showLoading
       }
     );
   }

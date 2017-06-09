@@ -9,13 +9,18 @@
     <ion-toolbar no-border-top>
         <ion-segment [(ngModel)]="tabs">
             <ion-segment-button value="detail">
-                Puppies
+                <span class="right-border"></span>
+                <ion-icon name="paper"></ion-icon>
+                جزییات طاقه
             </ion-segment-button>
             <ion-segment-button value="history">
-                Kittens
+                <span class="right-border"></span>
+                <ion-icon name="ios-person"></ion-icon>
+                سوابق طاقه
             </ion-segment-button>
             <ion-segment-button value="similar">
-                Ducklings
+                <ion-icon name="bookmark"></ion-icon>
+                طاقه مشابه
             </ion-segment-button>
         </ion-segment>
     </ion-toolbar>
@@ -28,7 +33,7 @@
                 <ion-col bold>
                     سريال طاقه
                 </ion-col>
-                <ion-col col-8>
+                <ion-col col-7>
                     {{item.serial}}
                 </ion-col>
             </ion-row>
@@ -36,15 +41,15 @@
                 <ion-col bold>
                     شماره بچ کالا
                 </ion-col>
-                <ion-col col-8>
+                <ion-col col-7>
                     {{item.batch}}
                 </ion-col>
             </ion-row>
             <ion-row>
                 <ion-col bold>
-                    عرض طافه
+                    عرض طاقه
                 </ion-col>
-                <ion-col col-8>
+                <ion-col col-7>
                     {{item.width}}
                 </ion-col>
             </ion-row>
@@ -52,7 +57,7 @@
                 <ion-col bold>
                     کد کالا نوسا
                 </ion-col>
-                <ion-col col-8>
+                <ion-col col-7>
                     {{item.code}}
                 </ion-col>
             </ion-row>
@@ -60,7 +65,7 @@
                 <ion-col bold>
                     کد اختصاصی
                 </ion-col>
-                <ion-col col-8>
+                <ion-col col-7>
                     {{item.barcode}}
                 </ion-col>
             </ion-row>
@@ -68,7 +73,7 @@
                 <ion-col bold>
                     کد رنگ طاقه
                 </ion-col>
-                <ion-col col-8>
+                <ion-col col-7>
                     {{item.color}}
                 </ion-col>
             </ion-row>
@@ -76,7 +81,7 @@
                 <ion-col bold>
                     مشحصه کالا
                 </ion-col>
-                <ion-col col-8>
+                <ion-col col-7>
                     {{item.characteristic}}
                 </ion-col>
             </ion-row>
@@ -84,7 +89,7 @@
                 <ion-col bold>
                     متراژ اول دوره
                 </ion-col>
-                <ion-col col-8>
+                <ion-col col-7>
                     {{item.value}}
                 </ion-col>
             </ion-row>
