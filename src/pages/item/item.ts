@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 
 import { LoginPage } from "../login-page/login-page";
+import { CutPage } from "../cut/cut";
 
 import { DataService } from "../../providers/data-service";
 import { ConfigProvider } from "../../providers/config-provider";
@@ -37,7 +38,7 @@ export class ItemPage {
 
 
   showCutPage() {
-    let modal = this.modalCtrl.create(LoginPage , '' , {
+    let modal = this.modalCtrl.create(CutPage , '' , {
       showBackdrop: true,
       enableBackdropDismiss: true
     });

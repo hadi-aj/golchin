@@ -51,26 +51,6 @@ page-item {
             border: none;
         }
     }
-    div.remaining {
-        background: #199A84;
-        border: 1px solid white;
-        box-shadow: 0px 0px 0px 2px #199A84;
-        text-align: center;
-        color: #FFF;
-        padding: 6px;
-        margin: auto;
-        width: 80%;
-        min-width: 200px;
-        max-width: 500px;
-        span {
-            width: calc(20% - 5px);
-            display: inline-block;
-            &:first-child {
-                width: 80%;
-                border-left: 1px solid #FFF;
-            }
-        }
-    }
     ion-page.modal {
         padding: 30px;
         background: rgba(0, 0, 0, 0.5);
@@ -78,4 +58,9 @@ page-item {
     .disabledfeature {
         color: #8f8f8f;
     }
+}
+
+.modal-wrapper {
+    // max-width: 94% !important;
+    // right: 3% !important;
 }

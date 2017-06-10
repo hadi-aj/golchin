@@ -14,6 +14,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login-page/login-page';
 import { ItemPage } from '../pages/item/item';
+import { CutPage } from '../pages/cut/cut';
 
 import { FormsModule }   from '@angular/forms';
 
@@ -23,7 +24,7 @@ import { FormsModule }   from '@angular/forms';
     HomePage,
     LoginPage,
     ItemPage,
-
+    CutPage,
   ],
   imports: [
     FormsModule,
@@ -36,7 +37,8 @@ import { FormsModule }   from '@angular/forms';
     MyApp,
     HomePage,
     LoginPage,
-    ItemPage
+    ItemPage,
+    CutPage
   ],
   providers: [
     StatusBar,

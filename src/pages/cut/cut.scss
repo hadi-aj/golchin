@@ -1,0 +1,47 @@
+page-cut {
+    #header {
+        margin-bottom: 25px;
+        span.dateTime {
+            line-height: 4.6rem;
+            display: inline-block;
+            color: silver;
+            margin: 0 15px;
+        }
+    }
+    [border-bottom] {
+        border-bottom: 1px solid silver;
+    }
+    label {
+        vertical-align: middle;
+        align-items: center;
+        display: flex;
+        height: 100%;
+    }
+    input {
+        height: 36px;
+        margin-top: 4px;
+        background: #F5F5F5;
+        border: 1px solid silver;
+    }
+    #cut-value {
+        padding: 10px 0;
+        input {
+            width: 51px;
+        }
+    }
+    #order-number {
+        padding: 10px 0;
+        input {
+            width: 100%;
+        }
+    }
+    .customButton {
+        margin-top: 10px;
+    }
+    #alert {
+        color: map-get($colors, 'danger');
+        ion-icon {
+            font-size: 100px
+        }
+    }
+}

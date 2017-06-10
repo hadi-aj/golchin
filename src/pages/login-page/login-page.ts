@@ -13,6 +13,7 @@ import { HomePage } from "../home/home";
 export class LoginPage {
 
   loading: Loading;
+  sub: any;
   registerCredentials = { username: '', password: '' };
 
   constructor(
@@ -30,7 +31,7 @@ export class LoginPage {
 
   login() {
     this.showLoading();
-    this.auth.login(this.registerCredentials).subscribe(
+    this.sub = this.auth.login(this.registerCredentials).subscribe(
       data => {
         // console.log(data);
         if (data.status === 200) {
@@ -59,9 +60,16 @@ export class LoginPage {
 
   showLoading() {
     this.loading = this.loadingCtrl.create({
+      duration: 3000,
       content: "loading...",
       dismissOnPageChange: true,
     });
+
+    this.loading.onDidDismiss(() => {
+      this.sub.unsubscribe();
+      console.log('Dismissed loading');
+    });
+
     this.loading.present();
   }
 

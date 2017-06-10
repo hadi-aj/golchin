@@ -39,7 +39,7 @@ export class HomePage {
 
   getItem() {
     this.showLoading();
-    this.dataService.getItem(21002692).subscribe(
+    this.dataService.getItem(42205298).subscribe(
       data => {
         if (data.status == 200) {
           this.dataService.setItem(data.content);

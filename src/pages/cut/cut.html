@@ -1,0 +1,63 @@
+<ion-content padding>
+
+    <ion-list>
+        <ion-row border-bottom id="header">
+            <ion-col>
+                <span class="dateTime">
+        {{date}}
+      </span>
+                <span class="dateTime">
+        {{time}}
+      </span>
+                <button ion-button clear icon-only float-left (click)="dismiss()">
+      <ion-icon name="close" color="dark"  ></ion-icon>
+      </button>
+            </ion-col>
+        </ion-row>
+        <ion-row border-bottom id="cut-value">
+            <ion-col col-4>
+                <label for="">
+                متراژ برش
+
+              </label>
+
+            </ion-col>
+            <ion-col col-8 dir="ltr" no-padding>
+                <ion-row>
+                    <button ion-button outline icon-only flout-right color="silver1" (click)="increment()"> 
+                    <ion-icon name="add" color="secondary" ></ion-icon>
+                  </button>
+                    <input type="number" text-center [(ngModel)]="length">
+                    <button ion-button outline icon-only flout-left color="silver1" (click)="decrement()">
+                    <ion-icon name="remove" color="danger"></ion-icon>
+                  </button>
+
+                </ion-row>
+            </ion-col>
+        </ion-row>
+        <ion-row border-bottom id="order-number">
+            <ion-col>
+                <label for="">
+                شماره سفارش
+              </label>
+            </ion-col>
+            <ion-col dir="ltr" no-padding>
+                <input type="text" text-center [(ngModel)]="orderNumber">
+            </ion-col>
+        </ion-row>
+        <ion-row text-center id="alert" *ngIf="alert">
+            <ion-col>
+                <ion-icon name="ios-warning-outline" color="danger"></ion-icon>
+                <p color="danger">
+                    امکان تکه کردن این طاقه وجود ندارد
+                </p>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <div class="customButton" (click)="cut()">
+                ثبت برش طاقه
+            </div>
+        </ion-row>
+
+    </ion-list>
+</ion-content>
