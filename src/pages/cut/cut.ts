@@ -51,7 +51,7 @@ export class CutPage {
   }
 
   cut() {
-    this.dataService.cut(this.navCtrl, this.length, this.orderNumber, this.dataService.item.item.id).then(
+    this.dataService.cut(this.navCtrl, this.length, this.orderNumber, this.dataService.item.id).then(
       data => {
         if (data) {
           console.log("ok");

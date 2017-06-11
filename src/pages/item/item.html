@@ -13,7 +13,7 @@
                 <ion-icon name="paper"></ion-icon>
                 جزییات طاقه
             </ion-segment-button>
-            <ion-segment-button value="history">
+            <ion-segment-button value="history" (click)="getHistory()">
                 <span class="right-border"></span>
                 <ion-icon name="ios-person"></ion-icon>
                 سوابق طاقه
@@ -106,31 +106,35 @@
                 </ion-col>
             </ion-row>
         </ion-grid>
-        <ion-list *ngSwitchCase="'kittens'">
-            <ion-item>
-                <ion-thumbnail item-start>
-                    <img src="assets/img/thumbnail-kitten-1.jpg">
-                </ion-thumbnail>
-                <h2>Luna</h2>
-            </ion-item>
-            <ion-item>
-                <ion-thumbnail item-start>
-                    <img src="assets/img/thumbnail-kitten-3.jpg">
-                </ion-thumbnail>
-                <h2>Milo</h2>
-            </ion-item>
-            <ion-item>
-                <ion-thumbnail item-start>
-                    <img src="assets/img/thumbnail-kitten-4.jpg">
-                </ion-thumbnail>
-                <h2>Bandit</h2>
-            </ion-item>
-            <ion-item>
-                <ion-thumbnail item-start>
-                    <img src="assets/img/thumbnail-kitten-2.jpg">
-                </ion-thumbnail>
-                <h2>Nala</h2>
-            </ion-item>
+        <ion-list *ngSwitchCase="'history'">
+            <ion-row>
+                <ion-col>
+                    نام کاربر
+                </ion-col>
+                <ion-col>
+                    تاریخ ثبت برش
+                </ion-col>
+                <ion-col>
+                    برش
+                </ion-col>
+                <ion-col>
+                    مانده
+                </ion-col>
+            </ion-row>
+            <ion-row *ngFor="let cut of history">
+                <ion-col>
+                    {{cut.createdUser.username}}
+                </ion-col>
+                <ion-col>
+                    {{cut.created}}
+                </ion-col>
+                <ion-col>
+                    {{cut.length}}
+                </ion-col>
+                <ion-col>
+                    {{cut.remaining}}
+                </ion-col>
+            </ion-row>
         </ion-list>
 
         <ion-list *ngSwitchCase="'ducklings'">

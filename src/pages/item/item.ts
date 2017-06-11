@@ -17,6 +17,7 @@ export class ItemPage {
   tabs: string = "detail";
   headerBg: string;
   item: any;
+  history: any;
 
   constructor(
     public navCtrl: NavController,
@@ -36,19 +37,33 @@ export class ItemPage {
     this.item = dataService.item;
   }
 
+  ionViewDidLoad() {
+    // console.log('ionViewDidLoad Item');
+  }
 
   showCutPage() {
-    let modal = this.modalCtrl.create(CutPage , '' , {
+    let modal = this.modalCtrl.create(CutPage, '', {
       showBackdrop: true,
       enableBackdropDismiss: true
     });
     modal.present();
   }
 
-
-  ionViewDidLoad() {
-    // console.log('ionViewDidLoad Item');
+  getHistory() {
+    if(this.history){
+      return;
+    }
+    this.dataService.getHistory(this.navCtrl,this.dataService.item.id).then((response) => {
+      this.history = response
+    },
+      (error) => {
+        if (error.status == 401) {
+          this.navCtrl.setRoot(LoginPage);
+        }
+      }
+    );
   }
+
 
 
 }
