@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 
 import { DataService } from "../../providers/data-service";
+import { LoginPage } from "../login-page/login-page";
 
 @IonicPage()
 @Component({
@@ -23,15 +24,15 @@ export class CutPage {
     public dataService: DataService,
   ) {
 
-    this.dataService.getDateTime().subscribe(
-      data => {
-        this.date = data.content.date;
-        this.time = data.content.time;
-      },
-      err => {
-        console.log(err);
-      }
-    );
+    // this.dataService.getDateTime().subscribe(
+    //   data => {
+    //     this.date = data.content.date;
+    //     this.time = data.content.time;
+    //   },
+    //   err => {
+    //     console.log(err);
+    //   }
+    // );
 
   }
   ionViewDidLoad() {
@@ -50,16 +51,19 @@ export class CutPage {
   }
 
   cut() {
-    this.dataService.cut(this.length , this.orderNumber , this.dataService.item.item.id ).subscribe(
+    this.dataService.cut(this.navCtrl, this.length, this.orderNumber, this.dataService.item.item.id).then(
       data => {
-        if(data.content.result == true ) {
+        if (data) {
           console.log("ok");
-        }else {
+        } else {
           console.log("Nok");
         }
       },
       error => {
-          console.log("Error");
+        console.log("Error");
+        if (error.status == 401) {
+          this.navCtrl.setRoot(LoginPage);
+        }
       }
     );
   }

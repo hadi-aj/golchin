@@ -9,8 +9,7 @@
 <ion-content padding>
     The world is your oyster.
     <p>
-        If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-
+        Hello {{this.userProvider.user.profile.name}} !
     </p>
     <button ion-button block (click)="showUserInfo()">Show User Name</button>
     <button ion-button block (click)="getItem()">Get Item</button>

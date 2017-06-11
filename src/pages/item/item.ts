@@ -33,7 +33,7 @@ export class ItemPage {
     }
 
     // Set Item
-    this.item = dataService.item.item;
+    this.item = dataService.item;
   }
 
 

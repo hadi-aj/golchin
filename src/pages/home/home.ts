@@ -7,6 +7,7 @@ import { UserProvider } from "../../providers/user-provider";
 import { DataService } from "../../providers/data-service";
 
 import { ItemPage } from "../item/item";
+import { LoginPage } from "../login-page/login-page";
 
 @Component({
   selector: 'page-home',
@@ -21,36 +22,22 @@ export class HomePage {
 
   constructor(
     public navCtrl: NavController,
-    private alertCtrl: AlertController,
-    public loadingCtrl: LoadingController,
     public userProvider: UserProvider,
     public dataService: DataService,
     private barcodeScanner: BarcodeScanner
   ) { }
 
-  showUserInfo() {
-    let alert = this.alertCtrl.create({
-      title: 'UserInfo',
-      subTitle: this.userProvider.user.profile.name,
-      buttons: ['ok']
-    });
-    alert.present();
-  }
-
   getItem() {
-    this.showLoading();
-    this.dataService.getItem(42205298).subscribe(
-      data => {
-        if (data.status == 200) {
-          this.dataService.setItem(data.content);
-          this.navCtrl.push(ItemPage);
-        } else {
-          this.showError('Not Found');
+    this.dataService.getItem(this.navCtrl, 42205298).then((response) => {
+      if (response) {
+        this.dataService.setItem(response);
+        this.navCtrl.push(ItemPage);
+      }
+    },
+      (error) => {
+        if (error.status == 401) {
+          this.navCtrl.setRoot(LoginPage);
         }
-      },
-      err => {
-        console.log(err);
-        this.showError('Error ' + err.status);
       }
     );
   }
@@ -64,21 +51,4 @@ export class HomePage {
     });
   }
 
-  showLoading() {
-    this.loading = this.loadingCtrl.create({
-      content: "loading...",
-      dismissOnPageChange: true,
-    });
-    this.loading.present();
-  }
-
-  showError(message: string) {
-    this.loading.dismiss();
-    let alert = this.alertCtrl.create({
-      title: 'Error',
-      subTitle: message,
-      buttons: ['ok']
-    });
-    alert.present();
-  }
 }
