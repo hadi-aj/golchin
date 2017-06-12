@@ -1,17 +1,27 @@
-<ion-header>
-    <ion-navbar>
-        <ion-title>
-            Ionic Blank
-        </ion-title>
-    </ion-navbar>
-</ion-header>
-
-<ion-content padding>
-    The world is your oyster.
-    <p>
-        Hello {{this.userProvider.user.profile.name}} !
-    </p>
-    <button ion-button block (click)="showUserInfo()">Show User Name</button>
-    <button ion-button block (click)="getItem()">Get Item</button>
-    <button ion-button block (click)="scanBarcode()">scanBarcode</button>
+<ion-content>
+    <ion-grid no-padding text-center>
+        <ion-row class="userInfo">
+            <ion-col>
+                <ion-icon name="md-person"></ion-icon>
+                {{this.userProvider.user.profile.name}}
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-img src="../assets/images/barcode.png" (click)="scanBarcode()"></ion-img>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <button ion-button icon-only clear large>
+                    <ion-icon name="power" color="danger" ></ion-icon>
+                </button>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                All right reserved Golchin 2017, <span bold>HOMATEC</span>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>

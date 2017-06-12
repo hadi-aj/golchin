@@ -1,16 +1,21 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, AlertController, AlertOptions } from 'ionic-angular';
+import { NavController, NavParams, ViewController, AlertController, AlertOptions } from 'ionic-angular';
 
 import { DataService } from "../../providers/data-service";
 import { LoginPage } from "../login-page/login-page";
 
-@IonicPage()
+/**
+ * Generated class for the CutPage page.
+ *
+ * See http://ionicframework.com/docs/components/#navigation for more info
+ * on Ionic pages and navigation.
+ */
+// @IonicPage()
 @Component({
-  selector: 'page-cut',
-  templateUrl: 'cut.html',
+  selector: 'page-cut-page',
+  templateUrl: 'cut-page.html',
 })
 export class CutPage {
-
   date: string = "";
   time: string = "";
   // fffff: {tttt : string  , rrrr: string};
@@ -132,4 +137,5 @@ export class CutPage {
     let alert = this.alertCtrl.create(alertOption);
     alert.present()
   }
+
 }

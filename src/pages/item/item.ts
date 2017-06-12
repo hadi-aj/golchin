@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
 
 import { LoginPage } from "../login-page/login-page";
-import { CutPage } from "../cut/cut";
+import { CutPage } from '../cut-page/cut-page';
 
 import { DataService } from "../../providers/data-service";
 import { ConfigProvider } from "../../providers/config-provider";
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-item',
   templateUrl: 'item.html',

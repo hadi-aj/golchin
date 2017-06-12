@@ -10,10 +10,12 @@ import { Injectable } from '@angular/core';
 export class ConfigProvider {
 
   public conf = {
+    baseUrl: 'http://192.168.1.17/golchin/rest-v1',
+    imagePath: 'http://192.168.1.17/golchin/upload_dir/images',
     // baseUrl: 'http://localhost/golchin/rest-v1',
-    baseUrl: 'http://localhost:8100/api',
-    imagePath: 'http://localhost/golchin/upload_dir/images',
-    defaultHeaderBg: '../../assets/images/defaultHeaderBg.jpg'
+    // baseUrl: 'http://localhost:8100/api',
+    // imagePath: 'http://localhost/golchin/upload_dir/images',
+    defaultHeaderBg: '../assets/images/defaultHeaderBg.jpg'
   };
   constructor() {}
 

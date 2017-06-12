@@ -3,10 +3,10 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
-import { ItemPage } from '../pages/item/item';
+// import { HomePage } from '../pages/home/home';
+// import { ItemPage } from '../pages/item/item';
 import { LoginPage } from '../pages/login-page/login-page';
-import { CutPage } from '../pages/cut/cut';
+// import { CutPage } from '../pages/cut/cut';
 
 @Component({
   templateUrl: 'app.html'

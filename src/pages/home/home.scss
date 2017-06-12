@@ -1,1 +1,29 @@
-page-home {}
+page-home {
+    ion-content {
+        background: url('../assets/images/homeBg.jpg') no-repeat center/cover;
+        // background-size: cover;
+        // height: 100%;
+        ion-col {
+            color: #FFF;
+        }
+    }
+    ion-grid {
+        height: 100%;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .userInfo {
+        margin-top: 20px;
+        ion-icon {
+            font-size: 50px;
+            display: block;
+            width: 70px;
+            height: 70px;
+            margin: auto;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            background: rgba(0, 0, 0, 0.33);
+            padding-top: 8px;
+        }
+    }
+}

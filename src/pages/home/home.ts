@@ -27,11 +27,29 @@ export class HomePage {
     private barcodeScanner: BarcodeScanner
   ) { }
 
-  getItem() {
-    this.dataService.getItem(this.navCtrl, 42205298).then((response) => {
+  getSampleItem(barcode: any) { 
+      this.getItem(barcode);
+  }
+
+  scanBarcode() {    
+    this.barcodeScanner.scan().then((barcodeData) => {
+      // alert(barcodeData.text);
+      this.getItem(barcodeData.text);
+      // Success! Barcode data is here
+    }, (err) => {
+      // An error occurred
+    });
+  }
+
+  getItem(barcode: any) { // 42205298
+    this.dataService.getItem(this.navCtrl, barcode).then((response) => {
       if (response) {
         this.dataService.setItem(response);
-        this.navCtrl.push(ItemPage);
+        if(this.dataService.item.id) {
+          this.navCtrl.push(ItemPage);
+        }else {
+          console.log('Barcode invalid ' + barcode);
+        }
       }
     },
       (error) => {
@@ -42,13 +60,5 @@ export class HomePage {
     );
   }
 
-  scanBarcode() {
-    this.barcodeScanner.scan().then((barcodeData) => {
-      alert(barcodeData.text);
-      // Success! Barcode data is here
-    }, (err) => {
-      // An error occurred
-    });
-  }
 
 }

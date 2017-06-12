@@ -14,7 +14,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login-page/login-page';
 import { ItemPage } from '../pages/item/item';
-import { CutPage } from '../pages/cut/cut';
+import { CutPage } from '../pages/cut-page/cut-page';
 
 import { FormsModule }   from '@angular/forms';
 
