@@ -4,10 +4,10 @@
         <ion-row border-bottom id="header">
             <ion-col>
                 <span class="dateTime">
-        {{date}}
+        {{dateTime.date}}
       </span>
                 <span class="dateTime">
-        {{time}}
+        {{dateTime.time}}
       </span>
                 <button ion-button clear icon-only float-left (click)="dismiss()">
       <ion-icon name="close" color="dark"  ></ion-icon>
@@ -42,10 +42,10 @@
               </label>
             </ion-col>
             <ion-col dir="ltr" no-padding>
-                <input type="text" text-center [(ngModel)]="orderNumber">
+                <input type="number" text-center [(ngModel)]="orderNumber">
             </ion-col>
         </ion-row>
-        <ion-row text-center id="alert" *ngIf="alert">
+        <ion-row text-center id="warning" *ngIf="warning">
             <ion-col>
                 <ion-icon name="ios-warning-outline" color="danger"></ion-icon>
                 <p color="danger">

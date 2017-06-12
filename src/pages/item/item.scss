@@ -58,9 +58,12 @@ page-item {
     .disabledfeature {
         color: #8f8f8f;
     }
-}
-
-.modal-wrapper {
-    // max-width: 94% !important;
-    // right: 3% !important;
+    .header {
+        background: #F2F2F2;
+        color: #333;
+        text-align: center;
+    }
+    [text-small] {
+        font-size: 1.2rem;
+    }
 }

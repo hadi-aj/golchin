@@ -18,6 +18,7 @@ export class ItemPage {
   headerBg: string;
   item: any;
   history: any;
+  same: any;
 
   constructor(
     public navCtrl: NavController,
@@ -46,14 +47,25 @@ export class ItemPage {
       showBackdrop: true,
       enableBackdropDismiss: true
     });
+    modal.onDidDismiss((data) => {
+      // اگر برش خورده بود داده ها رو آپدیت کن
+      if (data.cutted) {
+        this.history = null;
+        // reload history
+        this.getHistory();
+        // update Item after cut it
+        this.updateItem();
+      }
+    });
+
     modal.present();
   }
 
   getHistory() {
-    if(this.history){
+    if (this.history) {
       return;
     }
-    this.dataService.getHistory(this.navCtrl,this.dataService.item.id).then((response) => {
+    this.dataService.getHistory(this.navCtrl, this.dataService.item.id).then((response) => {
       this.history = response
     },
       (error) => {
@@ -64,6 +76,36 @@ export class ItemPage {
     );
   }
 
+  getSame() {
+    if (this.same) {
+      return;
+    }
+    this.dataService.getSame(this.navCtrl, this.dataService.item.id).then((response) => {
+      this.same = response
+    },
+      (error) => {
+        if (error.status == 401) {
+          this.navCtrl.setRoot(LoginPage);
+        }
+      }
+    );
+  }
 
+  // update Item after cut it
+  updateItem() {
+    this.dataService.getItem(this.navCtrl, this.dataService.item.barcode).then((response) => {
+      if (response) {
+        this.dataService.setItem(response);
+        // Update Item
+        this.item = this.dataService.item;
+      }
+    },
+      (error) => {
+        if (error.status == 401) {
+          this.navCtrl.setRoot(LoginPage);
+        }
+      }
+    );
+  }
 
 }

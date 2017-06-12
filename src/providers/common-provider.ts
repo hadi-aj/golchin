@@ -1,19 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Http, RequestMethod, RequestOptionsArgs, Headers } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import { Observable } from 'rxjs';
-import { NavController, LoadingController, Loading, AlertController } from 'ionic-angular';
+import { NavController, LoadingController, AlertController } from 'ionic-angular';
 
 import { UserProvider } from "./user-provider";
 import { ConfigProvider } from "../providers/config-provider";
 
-/*
-  Generated class for the CommonProvider provider.
 
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
-*/
 @Injectable()
 export class CommonProvider {
 
@@ -85,10 +80,10 @@ export class CommonProvider {
     return loader;
   }
 
-  showAlert(text: string) {
+  showAlert(message: string) {
     let alert = this.alertCtrl.create({
       title: 'Error',
-      subTitle: text,
+      message: message,
       buttons: ['ok']
     });
     alert.present();

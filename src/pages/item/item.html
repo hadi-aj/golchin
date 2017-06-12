@@ -18,7 +18,7 @@
                 <ion-icon name="ios-person"></ion-icon>
                 سوابق طاقه
             </ion-segment-button>
-            <ion-segment-button value="similar">
+            <ion-segment-button value="same" (click)="getSame()">
                 <ion-icon name="bookmark"></ion-icon>
                 طاقه مشابه
             </ion-segment-button>
@@ -93,9 +93,17 @@
                     {{item.value}}
                 </ion-col>
             </ion-row>
+            <!--<ion-row>
+                <ion-col bold>
+                    متراژ فعلی طاقه 
+                </ion-col>
+                <ion-col col-7>
+                    {{item.remaining}}
+                </ion-col>
+            </ion-row>-->
             <ion-row>
                 <ion-col>
-                    <div class="customButton">
+                    <div class="customButton" (click)="showCutPage()">
                         <span>
                     متراژ فعلی طاقه 
                     </span>
@@ -107,61 +115,60 @@
             </ion-row>
         </ion-grid>
         <ion-list *ngSwitchCase="'history'">
-            <ion-row>
-                <ion-col>
+            <ion-row class="header">
+                <ion-col col-3>
                     نام کاربر
                 </ion-col>
-                <ion-col>
+                <ion-col col-5>
                     تاریخ ثبت برش
                 </ion-col>
-                <ion-col>
+                <ion-col col-2>
                     برش
                 </ion-col>
-                <ion-col>
+                <ion-col col-2>
                     مانده
                 </ion-col>
             </ion-row>
             <ion-row *ngFor="let cut of history">
-                <ion-col>
+                <ion-col col-3>
                     {{cut.createdUser.username}}
                 </ion-col>
-                <ion-col>
+                <ion-col col-5 text-center>
                     {{cut.created}}
                 </ion-col>
-                <ion-col>
+                <ion-col col-2 text-center text-small>
                     {{cut.length}}
                 </ion-col>
-                <ion-col>
+                <ion-col col-2 text-center text-small>
                     {{cut.remaining}}
                 </ion-col>
             </ion-row>
         </ion-list>
-
-        <ion-list *ngSwitchCase="'ducklings'">
-            <ion-item>
-                <ion-thumbnail item-start>
-                    <img src="assets/img/thumbnail-duckling-1.jpg">
-                </ion-thumbnail>
-                <h2>Daffy</h2>
-            </ion-item>
-            <ion-item>
-                <ion-thumbnail item-start>
-                    <img src="assets/img/thumbnail-duckling-2.jpg">
-                </ion-thumbnail>
-                <h2>Huey</h2>
-            </ion-item>
-            <ion-item>
-                <ion-thumbnail item-start>
-                    <img src="assets/img/thumbnail-duckling-3.jpg">
-                </ion-thumbnail>
-                <h2>Dewey</h2>
-            </ion-item>
-            <ion-item>
-                <ion-thumbnail item-start>
-                    <img src="assets/img/thumbnail-duckling-4.jpg">
-                </ion-thumbnail>
-                <h2>Louie</h2>
-            </ion-item>
+        <ion-list *ngSwitchCase="'same'">
+            <ion-row class="header">
+                <ion-col col-4>
+                    سريال طاقه
+                </ion-col>
+                <ion-col col-6>
+                    انبار
+                </ion-col>
+                <ion-col col-2>
+                    متراژ
+                </ion-col>
+            </ion-row>
+            <ion-row *ngFor="let s of same">
+                <ion-col col-4 text-center>
+                    {{s.serial}}
+                </ion-col>
+                <ion-col col-6 text-center>
+                    {{s.warehouseLocation}}
+                </ion-col>
+                <ion-col col-2 text-center text-small>
+                    {{s.remaining}}
+                </ion-col>
+            </ion-row>
         </ion-list>
+
+
     </div>
 </ion-content>

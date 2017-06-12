@@ -35,7 +35,16 @@ export class DataService extends CommonProvider {
   }
 
   getHistory(navCtrl: NavController, itemId) {
-    let url: string = '/item/history';
+    let url: string = '/item/get-history';
+    return this.get(navCtrl, url,
+      {
+        itemId: itemId,
+      }
+    );
+  }
+
+  getSame(navCtrl: NavController, itemId) {
+    let url: string = '/item/get-same';
     return this.get(navCtrl, url,
       {
         itemId: itemId,
