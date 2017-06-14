@@ -65,7 +65,7 @@ export class ItemPage {
     if (this.history) {
       return;
     }
-    this.dataService.getHistory(this.navCtrl, this.dataService.item.id).then((response) => {
+    this.dataService.getHistory( this.dataService.item.id).then((response) => {
       this.history = response
     },
       (error) => {
@@ -80,7 +80,7 @@ export class ItemPage {
     if (this.same) {
       return;
     }
-    this.dataService.getSame(this.navCtrl, this.dataService.item.id).then((response) => {
+    this.dataService.getSame( this.dataService.item.id).then((response) => {
       this.same = response
     },
       (error) => {
@@ -93,7 +93,7 @@ export class ItemPage {
 
   // update Item after cut it
   updateItem() {
-    this.dataService.getItem(this.navCtrl, this.dataService.item.barcode).then((response) => {
+    this.dataService.getItem( this.dataService.item.barcode).then((response) => {
       if (response) {
         this.dataService.setItem(response);
         // Update Item

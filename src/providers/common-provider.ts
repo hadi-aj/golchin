@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Subscription } from 'rxjs/Subscription';
 
 import { Observable } from 'rxjs';
-import { NavController, LoadingController, AlertController } from 'ionic-angular';
+import { LoadingController, AlertController } from 'ionic-angular';
 
 import { UserProvider } from "./user-provider";
 import { ConfigProvider } from "../providers/config-provider";
@@ -12,7 +13,7 @@ import { ConfigProvider } from "../providers/config-provider";
 @Injectable()
 export class CommonProvider {
 
-  sub: any;
+  sub: Subscription;
 
   constructor(
     public http: Http,
@@ -23,16 +24,26 @@ export class CommonProvider {
   ) { }
 
 
-  get( navCtrl: NavController , url, body, authorization = true, errorMessage: string = 'Error') {
+  get(
+    url: string,
+    body: any = '',
+    authorization: boolean = true,
+    headers?: Headers,
+    errorMessage401: string = "لطفا دوباره وارد شوید",
+    errorMessage: string = "Error"
+  ) {
 
-    let headers = new Headers();
+    // let headers = new Headers();
     let reqOption = {};
     url = this.configProvider.conf.baseUrl + url;
 
-    if (authorization) {
-      headers.append('Authorization', 'Basic ' + btoa(this.userProvider.user.token + ':'));
-      reqOption = { headers: headers };
+    if (!headers) {
+      headers = new Headers();
+      if (authorization) {
+        headers.append('Authorization', 'Basic ' + btoa(this.userProvider.user.token + ':'));
+      }
     }
+    reqOption = { headers: headers };
 
     //show the loader before starting the request
     let loader = this.showLoader();
@@ -49,16 +60,18 @@ export class CommonProvider {
           loader.dismiss().then(() => resolve(data));
         },
         (error) => {
-          console.log('error');
+          console.log('error = ' + error);
           loader.dismiss().then(() => {
-            if (error.status == 401 && navCtrl.getActive().name != 'LoginPage'  ) {
-              errorMessage = "لطفا دوباره وارد شوید";
+
+            if (error.status == 401) {
+              errorMessage = errorMessage401;
+            } else {
+              errorMessage = errorMessage + ' ' + error.status;
             }
             this.showAlert(errorMessage);
             return reject(error)
           });
         },
-
       )
     });
   }
@@ -68,11 +81,13 @@ export class CommonProvider {
 
     let loader = this.loadingCtrl.create({
       content: "Loading...",
-      duration: 3000,
+      duration: 5000,
     });
 
     loader.onDidDismiss(() => {
+      // if(this.sub.)
       this.sub.unsubscribe();
+      // this.showAlert('خطا در اتصال به سرور');
     });
 
     loader.present();

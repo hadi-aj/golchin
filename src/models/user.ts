@@ -10,7 +10,8 @@ export class User {
         location:string,
         website:string,
         bio:string,
-        timezone:string
+        timezone:string,
+        image: string
     };
     token: string;
 }

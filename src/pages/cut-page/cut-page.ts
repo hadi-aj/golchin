@@ -36,7 +36,7 @@ export class CutPage {
       date: "-/-/-",
       time: "-:-"
     }
-    this.dataService.getDateTime(this.navCtrl).then(
+    this.dataService.getDateTime().then(
       (response) => {
         this.dateTime = response;
       },
@@ -53,6 +53,7 @@ export class CutPage {
   increment() {
     this.length = this.length + 1;
   }
+  
   decrement() {
     this.length -= 1;
   }
@@ -89,6 +90,10 @@ export class CutPage {
       message = "مقدار برش را وارد کنید";
     }
 
+    if (!this.orderNumber) {
+      message = "شماره سفارش را وارد کنید";
+    }
+
     if (this.dataService.item.remaining - this.length < this.dataService.item.minimumRemaining) {
       message = "امکان برش به این مقدار نیست" + "\n" + "حداقل باقیمانده باید بیشتر از " + this.dataService.item.minimumRemaining + " متر باشد";
     }
@@ -107,7 +112,7 @@ export class CutPage {
 
 
   requestCutting() {
-    this.dataService.cut(this.navCtrl, this.length, this.orderNumber, this.dataService.item.id).then(
+    this.dataService.cut(this.length, this.orderNumber, this.dataService.item.id).then(
       data => {
         this.showAlert({
           title: "تایید",

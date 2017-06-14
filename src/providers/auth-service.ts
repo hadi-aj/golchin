@@ -1,31 +1,29 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
-import { Observable } from 'rxjs';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+import { Headers } from '@angular/http';
 
-import { User } from "../models/user";
 
-import { ConfigProvider } from "../providers/config-provider";
+import { CommonProvider } from "./common-provider";
 
 @Injectable()
-export class AuthService {
+export class AuthService extends CommonProvider {
 
-  constructor(public http: Http, private configProvider: ConfigProvider) { }
+  // constructor(public http: Http, private configProvider: ConfigProvider) { }
 
-  login(credentials: any) {
-    let url: string = this.configProvider.conf.baseUrl + '/user/login';
+  login(credentials: any, errorMessage401: string = 'نام کاربری و یا رمز عبور اشتباه است') {
+
+    let url: string = '/user/login';
+
     let headers = new Headers();
 
     headers.append('Authorization', 'Basic ' + btoa(credentials.username + ':' + credentials.password));
 
-    return this.http.post(url, JSON.stringify(credentials), { headers: headers })
-      .map(r => {
-        return { status: r.status, content: r.json() as User }
-      }).catch(
-      error => {
-        return Observable.throw(error);
-      });
+    return this.get(url, '', true, headers, errorMessage401);
+
+  }
+  
+  logout() {
+    let url = "/user/logout"
+    return this.get(url);
   }
 
 }

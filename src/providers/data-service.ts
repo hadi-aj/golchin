@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { NavController } from 'ionic-angular';
 
 import { CommonProvider } from "./common-provider";
 
@@ -9,23 +8,23 @@ export class DataService extends CommonProvider {
 
   public item: any;
 
-  getDateTime(navCtrl: NavController) {
+  getDateTime() {
     let url: string = '/server/jalali-date-time';
-    return this.get(navCtrl, url, {}, false);
+    return this.get(url, {}, false);
   }
 
-  getItem(navCtrl: NavController, barcode: number) {
+  getItem(barcode: number) {
     let url: string = '/item/view';
-    return this.get(navCtrl, url, { barcode: barcode });
+    return this.get(url, { barcode: barcode });
   }
 
   setItem(item) {
     this.item = item;
   }
 
-  cut(navCtrl: NavController, length, orderNumber, itemId) {
+  cut(length, orderNumber, itemId) {
     let url: string = '/cutting/cut';
-    return this.get(navCtrl, url,
+    return this.get(url,
       {
         itemId: itemId,
         length: length,
@@ -34,18 +33,18 @@ export class DataService extends CommonProvider {
     );
   }
 
-  getHistory(navCtrl: NavController, itemId) {
+  getHistory(itemId) {
     let url: string = '/item/get-history';
-    return this.get(navCtrl, url,
+    return this.get(url,
       {
         itemId: itemId,
       }
     );
   }
 
-  getSame(navCtrl: NavController, itemId) {
+  getSame(itemId) {
     let url: string = '/item/get-same';
-    return this.get(navCtrl, url,
+    return this.get(url,
       {
         itemId: itemId,
       }

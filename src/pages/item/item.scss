@@ -1,7 +1,14 @@
 page-item {
-    ion-header {
-        background: url('../../assets/images/a.jpg') no-repeat center/cover;
+    ion-header.header {
         height: 40%;
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-clip: border-box;
+        background-origin: padding-box;
+        background-position-x: center;
+        background-position-y: center;
+        background-size: cover;
     }
     ion-toolbar {
         position: absolute;

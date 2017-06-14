@@ -1,32 +1,44 @@
 <ion-content>
     <ion-grid no-padding>
-        <form (ngSubmit)="login()" #loginForm="ngForm">
-            <ion-row>
+        <ion-row class="logo">
+            <ion-col text-center>
+                <ion-img src="assets/images/logo.png"></ion-img>
+            </ion-col>
+        </ion-row>
+        <ion-row dir="ltr" class="fields">
+            <form (ngSubmit)="login()" #loginForm="ngForm">
                 <ion-col>
-
-                    <ion-list class="box">
-
-                        <ion-item>
-                            <ion-label>
-                                <ion-icon name="person" color="white"></ion-icon>
-                            </ion-label>
-                            <ion-input type="text" placeholder="USER NAME" name="username" [(ngModel)]="registerCredentials.username" required></ion-input>
-                        </ion-item>
-
-                        <ion-item class="no-border">
-                            <ion-label>
-                                <ion-icon name="lock" color="white"></ion-icon>
-                            </ion-label>
-                            <ion-input type="password" placeholder="PASSWORD" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
+                    <ion-list>
+                        <div class="box">
+                            <ion-item class="no-border username">
+                                <ion-label color="white">
+                                    <ion-icon name="ios-person-outline" color="white"></ion-icon>
+                                    USER NAME
+                                </ion-label>
+                                <ion-input text-right type="text" name="username" [(ngModel)]="registerCredentials.username" required></ion-input>
+                            </ion-item>
+                            <ion-item class="no-border">
+                                <ion-label color="white">
+                                    <ion-icon name="ios-lock-outline" color="white"></ion-icon>
+                                    PASSWORD
+                                </ion-label>
+                                <ion-input text-right type="password" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
+                            </ion-item>
+                        </div>
+                        <ion-item text-center>
+                            <button ion-button color="white" outline large type="submit">LOGIN</button>
+                            <!--<p>
+                                {{networkstatus}}
+                            </p>-->
                         </ion-item>
                     </ion-list>
                 </ion-col>
-            </ion-row>
-            <ion-row>
-                <ion-col text-center>
-                    <button ion-button color="white" outline large type="submit">LOGIN</button>
-                </ion-col>
-            </ion-row>
-        </form>
+            </form>
+        </ion-row>
+        <ion-row class="copyRight">
+            <ion-col>
+                All right reserved Golchin 2017, <span bold>HOMATEC</span>
+            </ion-col>
+        </ion-row>
     </ion-grid>
 </ion-content>
