@@ -42,7 +42,9 @@ page-login-page {
             width: 100%;
         }
         .logo img {
-            max-width: 40%;
+            width: 40%;
+            max-width: 570px;
+            min-width: 150px;
             margin: auto;
             margin-top: 35px;
         }

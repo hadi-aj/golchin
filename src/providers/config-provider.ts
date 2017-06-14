@@ -10,6 +10,8 @@ import { Injectable } from '@angular/core';
 export class ConfigProvider {
 
   public conf = {
+    localVersionNumber: '1.0.1',
+    updateUrl: "http://homatec.ir/golchin-test/apps/golchin-cut", 
     baseUrl: 'http://homatec.ir/golchin-test/rest-v1',
     imagePath: 'http://homatec.ir/golchin-test/upload_dir/images',
 

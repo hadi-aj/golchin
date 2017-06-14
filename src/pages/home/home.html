@@ -2,7 +2,7 @@
     <ion-grid no-padding text-center>
         <ion-row id="userInfo">
             <ion-col>
-                <ion-img src={{profileImage}}></ion-img>
+                <img src="{{profileImage}}" alt="" />
                 <p>
                     {{this.userProvider.user.profile.name}}
                 </p>
@@ -12,7 +12,7 @@
             <ion-col>
                 <!--365681-->
                 <!--63240707-->
-                <ion-img src="assets/images/barcode.png" (click)="scanBarcode()"></ion-img>
+                <img src="assets/images/barcode.png" (click)="scanBarcode()" alt="" />
             </ion-col>
         </ion-row>
         <ion-row id="barcodeButton">

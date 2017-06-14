@@ -20,8 +20,8 @@ export class CutPage {
   time: string = "";
   // fffff: {tttt : string  , rrrr: string};
   dateTime: any;
-  warning: boolean = true;
-  length: number = 0;
+  warning: boolean = false;
+  length: number;
   orderNumber: number;
 
   constructor(
@@ -86,7 +86,7 @@ export class CutPage {
     let message = "";
 
     console.log("this.length = " + this.length);
-    if (this.length <= 0) {
+    if (this.length <= 0 || !this.length ) {
       message = "مقدار برش را وارد کنید";
     }
 

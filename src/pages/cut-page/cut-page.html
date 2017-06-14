@@ -1,8 +1,7 @@
 <ion-content padding>
-
-    <ion-list>
+    <ion-grid no-padding>
         <ion-row border-bottom id="header">
-            <ion-col>
+            <ion-col no-padding>
                 <span class="dateTime">
         {{dateTime.date}}
       </span>
@@ -18,9 +17,7 @@
             <ion-col col-4>
                 <label for="">
                 متراژ برش
-
               </label>
-
             </ion-col>
             <ion-col col-8 dir="ltr" no-padding>
                 <ion-row>
@@ -54,10 +51,11 @@
             </ion-col>
         </ion-row>
         <ion-row>
-            <div class="customButton" (click)="cut()">
-                ثبت برش طاقه
-            </div>
+            <ion-col>
+                <div class="customButton" (click)="cut()">
+                    ثبت برش طاقه
+                </div>
+            </ion-col>
         </ion-row>
-
-    </ion-list>
+    </ion-grid>
 </ion-content>

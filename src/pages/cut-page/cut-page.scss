@@ -1,4 +1,9 @@
 page-cut-page {
+    ion-grid {
+        height: 100%;
+        flex-direction: column;
+        justify-content: space-between;
+    }
     #header {
         margin-bottom: 25px;
         span.dateTime {

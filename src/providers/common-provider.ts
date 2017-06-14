@@ -65,6 +65,8 @@ export class CommonProvider {
 
             if (error.status == 401) {
               errorMessage = errorMessage401;
+            } else if(error.status == 0) {
+              errorMessage = "امکان ارتباط با سرور وجود ندارد" + "\n" + "لطفا اتصال اینتر نت خود را چک کنید";
             } else {
               errorMessage = errorMessage + ' ' + error.status;
             }

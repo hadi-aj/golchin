@@ -2,7 +2,7 @@
     <ion-grid no-padding>
         <ion-row class="logo">
             <ion-col text-center>
-                <ion-img src="assets/images/logo.png"></ion-img>
+                <img src="assets/images/logo.png" alt="" />
             </ion-col>
         </ion-row>
         <ion-row dir="ltr" class="fields">
@@ -27,15 +27,15 @@
                         </div>
                         <ion-item text-center>
                             <button ion-button color="white" outline large type="submit">LOGIN</button>
-                            <!--<p>
+                            <p color="danger">
                                 {{networkstatus}}
-                            </p>-->
+                            </p>
                         </ion-item>
                     </ion-list>
                 </ion-col>
             </form>
         </ion-row>
-        <ion-row class="copyRight">
+        <ion-row class="copyRight" [hidden]="hiddenFooter">
             <ion-col>
                 All right reserved Golchin 2017, <span bold>HOMATEC</span>
             </ion-col>
